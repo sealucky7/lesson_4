@@ -30,7 +30,7 @@ diskont = diskont' . mt_rand(0, 2) . ';
 
 ';
 $bd = parse_ini_string($ini_string, true);
-//print_r($bd);
+print_r($bd);
 
 /*
  * 
@@ -91,14 +91,14 @@ function discount($diskont) {
  function inshop ($col, $inshop){
     global $co_inshop; 
         if ($col<=$inshop){
-            return $col;
+            return $inshop;
         }
         else {
             $co_inshop=1;
             return $inshop;
         }
  }
- //  Делаем секцию скидок
+ //  Делаем секцию скидок 
  $act_name='игрушка детская велосипед'; // наименование акционного товара
  $act_col=3; // количество товара для акции
 	if(in_array($act_name, $name) && $bd[$act_name]['количество заказано'] >= $act_col) { 
@@ -123,7 +123,7 @@ echo '<tr align="center"><td>№</td><td>Наименование<br/>товар
 				}
 		$discount_type($diskont); 
 		$price_discount[$i]=number_format(($price[$i]*$disc), 2, '.',''); 
-		$inshop[$i]=inshop ($col[$i], $bd[$name[$i]]['осталось на складе']); 
+		$inshop[$i]=inshop ($col[$i],$bd[$name[$i]]['осталось на складе']); 
 		$summa[$i]=number_format(($price_discount[$i]*$inshop[$i]), 2, '.', ''); 
                 
 		echo '<tr align="center">
