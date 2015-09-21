@@ -59,7 +59,7 @@ $bd = parse_ini_string($ini_string, true);
  $name=array_keys($bd);
  $count=count($name);
  //print_r($name);
- // Вычисляем скидку по акции
+// Вычисляем скидку по акции
  function discount_sale() {
 	global $disc;
 	global $disc_descr;
